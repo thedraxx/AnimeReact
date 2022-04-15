@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { H1, LI, NAVBAR } from "./styles/styledComponents";
+import { NavLink } from "react-router-dom";
+import { LI  } from "./styles/styledComponents";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";

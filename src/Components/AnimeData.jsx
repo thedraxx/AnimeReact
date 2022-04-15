@@ -1,23 +1,23 @@
-import React, { useEffect } from 'react'
-import {helpHttp, helphttp} from './helpers/helphttp';
+import React, { useEffect, useState } from 'react'
+import { Animes } from '../Pages/Animes';
+import {helpHttp} from './helpers/helphttp';
 
 export const AnimeData = () => {
 
+  const [AnimeData, setAnimeData] = useState([]);
+  const [condition, setCondition] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      let AnimeById = `https://api.jikan.moe/v4/anime/100`;
-      const AnimeData = await Promise.resolve(helpHttp().get(AnimeById));
-      console.log(AnimeData);
-
+      let AnimeById = `https://api.jikan.moe/v4/top/anime`;
+      const Data = await Promise.resolve(helpHttp().get(AnimeById));
+      setAnimeData(Data);
+      setCondition(true);
     };
-
     fetchData();
   }, []);
 
-
   return (
-    <div><h1>Anime</h1></div>
-    
+    <Animes AnimeData={AnimeData}  condition={condition}/>
   )
 }

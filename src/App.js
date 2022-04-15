@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
-import './App.css';
+import { AnimeData } from './Components/AnimeData';
 import { Rutas } from './Components/Rutas';
-
+import './Components/styles/Styles.scss';
 
 function App() {
   return (
