@@ -12,24 +12,45 @@ body {
         font-weight: bold;
     }
 
-    .contenedor{
+    .Grid {
+        width: 100%;
+        max-width: 1100px;
+        margin: auto;
+        margin-top: 60px;
+        margin-bottom: 60px;
         display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-
-
-        .img{
-            width: 40%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+ 
+        img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .title{
-            
-        }
+    }
 
-        
+    @media (max-width: 800px) {
+        .Grid {
+            width: 95%;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+         }
+
+         img{
+             grid-column-start:span 1 ;
+         }
+    }
+
+    @media (max-width: 500px) {
+        .Grid {
+            width: 70%;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 10px;
+         }
+         img{
+             height: 200px;
+         }
     }
 }
 
