@@ -18,6 +18,23 @@ body {
         font-weight: bold;
     }
 
+    li {
+        margin: 0px 10px;
+        text-decoration: none;
+        list-style: none;
+        box-shadow: none;
+        font-family: "Roboto", sans-serif;
+
+    }
+
+    h3 {
+        font-family: "Roboto", sans-serif;
+        color: #4d4d4d;
+        font-size: 15px;
+        text-decoration: solid;
+        color: red;
+    }
+
     .Grid {
         width: 100%;
         max-width: 1100px;
@@ -34,6 +51,13 @@ body {
             object-fit: cover;
         }
 
+        h1 {
+            font-family: "Roboto", sans-serif;
+            color: #4d4d4d;
+            font-size: 15px;
+            text-decoration: solid;
+        }
+
 
     }
 
@@ -41,6 +65,8 @@ body {
         width: 100%;
         max-width: 1100px;
         margin: auto;
+        margin-top: 60px;
+        margin-bottom: 60px;
 
         .title-home {
             font-size: 2em;
@@ -49,23 +75,25 @@ body {
         }
 
         .Grid-Home {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 100%;
             max-width: 1100px;
-            margin: 0 auto;
+            margin: auto ;
             margin-top: 60px;
             margin-bottom: 60px;
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(3fr);
+            
+            
         }
 
-        .container-home{
+        .container-home {
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .parraph{
+        .parraph {
             text-align: center;
             font-size: 1.3em;
             font-weight: bold;

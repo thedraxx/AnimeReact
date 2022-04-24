@@ -13,7 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "animate.css";
-import { H1 } from "../Components/styles/styledComponents";
+import "../Components/styles/Styles.scss";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -53,7 +53,7 @@ export const Animes = ({ AnimeData, condition }) => {
               <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
                   action={<IconButton aria-label="settings"></IconButton>}
-                  title={<H1>Episodes: {Anime.episodes} </H1>}
+                  title={<h1>Episodes: {Anime.episodes} </h1>}
                   subheader={Anime.genres.map((genre) => {
                     return `-${genre.name}-`;
                   })}

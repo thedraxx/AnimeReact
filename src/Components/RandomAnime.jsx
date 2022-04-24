@@ -16,7 +16,7 @@ export const RandomAnime = ({setDataRandom,number,setLoad}) => {
       setLoad(false);
     };
     fetchData();
-  }, []);
+  }, [number]);
 
   return (
     <>

@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { LI  } from "./styles/styledComponents";
-import { H3  } from "./styles/styledComponents";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,13 +11,13 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
+import "../Components/styles/Styles.scss";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -78,12 +76,16 @@ export const NavBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <LI>
-                <NavLink to="/" activeclassname="active"><H3>Home</H3></NavLink>
-              </LI>
-              <LI>
-                <NavLink to="/Animes" activeclassname="active"><H3>Most Populars</H3></NavLink>
-              </LI>
+              <li>
+                <NavLink to="/" activeclassname="active">
+                  <h3>Home</h3>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/Animes" activeclassname="active">
+                  <h3>Most Populars</h3>
+                </NavLink>
+              </li>
             </Menu>
           </Box>
           <Typography
@@ -95,12 +97,16 @@ export const NavBar = () => {
             MyAnimeList
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <LI>
-              <NavLink to="/" activeclassname="active">Home</NavLink>
-            </LI>
-            <LI>
-              <NavLink to="/Animes" activeclassname="active">Most Populars</NavLink>
-            </LI>
+            <li>
+              <NavLink to="/" activeclassname="active">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Animes" activeclassname="active">
+                Most Populars
+              </NavLink>
+            </li>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
