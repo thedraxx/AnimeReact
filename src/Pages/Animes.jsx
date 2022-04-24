@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
+import { Loader2 } from "../Components/Loader2";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import "animate.css";
+import { H1 } from "../Components/styles/styledComponents";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,48 +27,49 @@ const ExpandMore = styled((props) => {
 }));
 
 export const Animes = ({ AnimeData, condition }) => {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = (id) => {
-    setExpanded(expanded => ({
+    setExpanded((expanded) => ({
       ...expanded,
       [id]: !expanded[id],
     }));
   };
-  
+
   return (
     <div className="Grid">
-      {condition &&
-        AnimeData.data.map((Anime,i) => {
+
+      {!condition ? (
+        <div className="container-random">
+          <Loader2 />
+        </div>
+      ) : (
+        AnimeData.data.map((Anime) => {
           return (
-            <div key={Anime.mal_id}>
+            <div
+              key={Anime.mal_id}
+              className="animate__animated animate__bounceIn"
+            >
               <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                      R
-                    </Avatar>
-                  }
-                  action={
-                    <IconButton aria-label="settings">
-                      <MoreVertIcon />
-                    </IconButton>
-                  }
-                  title={`Episodes: ${Anime.episodes}`}
-                  subheader={Anime.genres.map((genre) => {return (`-${genre.name}-`)})}
+                  action={<IconButton aria-label="settings"></IconButton>}
+                  title={<H1>Episodes: {Anime.episodes} </H1>}
+                  subheader={Anime.genres.map((genre) => {
+                    return `-${genre.name}-`;
+                  })}
                 />
                 <CardMedia
                   component="img"
                   height="194"
-                  image={Anime.images.jpg.image_url}
-                  alt="imaga"
+                  image={Anime.images.jpg.large_image_url}
+                  alt="image"
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                     {Anime.title}
+                    {Anime.title}
                   </Typography>
                 </CardContent>
-                
+
                 <CardActions disableSpacing>
                   <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
@@ -86,18 +87,21 @@ export const Animes = ({ AnimeData, condition }) => {
                   </ExpandMore>
                 </CardActions>
 
-                <Collapse in={expanded[Anime.mal_id]} timeout="auto" unmountOnExit>
+                <Collapse
+                  in={expanded[Anime.mal_id]}
+                  timeout="auto"
+                  unmountOnExit
+                >
                   <CardContent>
                     <Typography paragraph>synopsis:</Typography>
-                    <Typography paragraph>
-                      {Anime.synopsis}
-                    </Typography>
+                    <Typography paragraph>{Anime.synopsis}</Typography>
                   </CardContent>
                 </Collapse>
               </Card>
             </div>
           );
-        })}
+        })
+      )}
     </div>
   );
 };

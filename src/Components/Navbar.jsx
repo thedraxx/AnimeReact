@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { LI  } from "./styles/styledComponents";
+import { H3  } from "./styles/styledComponents";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,7 +14,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-const pages = ["Products", "Pricing", "Blog"];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export const NavBar = () => {
@@ -45,7 +46,7 @@ export const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            Hello World
+            MyAnimeList
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -78,10 +79,10 @@ export const NavBar = () => {
               }}
             >
               <LI>
-                <NavLink to="/" activeclassname="active">HOME</NavLink>
+                <NavLink to="/" activeclassname="active"><H3>Home</H3></NavLink>
               </LI>
               <LI>
-                <NavLink to="/Animes" activeclassname="active">ANIMES</NavLink>
+                <NavLink to="/Animes" activeclassname="active"><H3>Most Populars</H3></NavLink>
               </LI>
             </Menu>
           </Box>
@@ -91,14 +92,14 @@ export const NavBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            MyAnimeList
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <LI>
-              <NavLink to="/" activeclassname="active">HOME</NavLink>
+              <NavLink to="/" activeclassname="active">Home</NavLink>
             </LI>
             <LI>
-              <NavLink to="/Animes" activeclassname="active">ANIMES</NavLink>
+              <NavLink to="/Animes" activeclassname="active">Most Populars</NavLink>
             </LI>
           </Box>
 
