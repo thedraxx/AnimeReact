@@ -86,6 +86,11 @@ export const NavBar = () => {
                   <h3>Most Populars</h3>
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/favorites" activeclassname="active">
+                  <h3>Favorites</h3>
+                </NavLink>
+              </li>
             </Menu>
           </Box>
           <Typography
@@ -106,6 +111,11 @@ export const NavBar = () => {
               <NavLink to="/Animes" activeclassname="active">
                 Most Populars
               </NavLink>
+            </li>
+            <li>
+                <NavLink to="/favorites" activeclassname="active">
+                  Favorites
+                </NavLink>
             </li>
           </Box>
 

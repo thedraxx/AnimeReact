@@ -5,6 +5,7 @@ import { Animes } from "../Pages/Animes";
 import { Error404 } from "../Pages/Error404";
 import { Home } from "../Pages/Home";
 import { AnimeData } from "./AnimeData";
+import { Favorites } from "../Pages/Favorites";
 
 export const Rutas = () => {
   return (
@@ -13,6 +14,7 @@ export const Rutas = () => {
       <Routes>
         <Route path="/animes" element={<AnimeData />} />
         <Route path="/animes" element={<Animes />} />
+        <Route path="/favorites" element={<Favorites/>} />
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error404 />} />
       </Routes>

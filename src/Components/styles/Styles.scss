@@ -32,7 +32,6 @@ body {
         color: #4d4d4d;
         font-size: 15px;
         text-decoration: solid;
-        color: red;
     }
 
     .Grid {
@@ -57,8 +56,6 @@ body {
             font-size: 15px;
             text-decoration: solid;
         }
-
-
     }
 
     .home {
@@ -77,13 +74,13 @@ body {
         .Grid-Home {
             width: 100%;
             max-width: 1100px;
-            margin: auto ;
+            margin: auto;
             margin-top: 60px;
             margin-bottom: 60px;
             display: grid;
             grid-gap: 20px;
-            grid-template-columns: repeat(3fr);
-            
+            align-items: center;
+            justify-items: center;
             
         }
 
@@ -101,6 +98,13 @@ body {
 
         }
 
+    }
+
+    .Favorites{
+        h1{
+            text-align: center;
+            margin:  50px;
+        }
     }
 
 

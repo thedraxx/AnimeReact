@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import "../Components/styles/Styles.scss";
 import { styled } from "@mui/material/styles";
-import { Loader2 } from "../Components/Loader2";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -13,7 +13,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "animate.css";
-import "../Components/styles/Styles.scss";
+
+let nombre = JSON.parse(localStorage.getItem("animeFavs"));
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,13 +27,8 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const Animes = ({ AnimeData, condition }) => {
+export const Favorites = () => {
   const [expanded, setExpanded] = useState(false);
-  const [animeFavs, setAnimeFavs] = useState([]);
-
-  Object.keys(animeFavs).length === 0 ? console.log('xD') :
-  localStorage.setItem('animeFavs', JSON.stringify(animeFavs));
-
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -41,47 +37,50 @@ export const Animes = ({ AnimeData, condition }) => {
     }));
   };
 
-  const AnimeFavorites = (anime) => {
-    setAnimeFavs([...animeFavs, anime]);
+  const DeleteAnimeFavorites = (anime) => {
+    const newAnimeFavs = nombre.filter((anime) => anime.mal_id !== anime.mal_id);
+    localStorage.setItem("animeFavs", JSON.stringify(newAnimeFavs));
+      
   };
 
   return (
     <div className="Grid">
-      {!condition ? (
-        <div className="container-random">
-          <Loader2 />
+      {nombre.length === 0 ? (
+        <div>
+          <h1>No hay Favoritos, actualiza la pagina para verlos</h1>
         </div>
       ) : (
-        AnimeData.data.map((Anime) => {
+        nombre.map((anime) => {
+          console.log(anime);
           return (
             <div
-              key={Anime.mal_id}
+              key={anime.mal_id}
               className="animate__animated animate__bounceIn"
             >
               <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
                   action={<IconButton aria-label="settings"></IconButton>}
-                  title={<h1>Episodes: {Anime.episodes} </h1>}
-                  subheader={Anime.genres.map((genre) => {
+                  title={<h1>Episodes: {anime.episodes} </h1>}
+                  subheader={anime.genres.map((genre) => {
                     return `-${genre.name}-`;
                   })}
                 />
                 <CardMedia
                   component="img"
                   height="194"
-                  image={Anime.images.jpg.large_image_url}
+                  image={anime.images.jpg.large_image_url}
                   alt="image"
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    {Anime.title}
+                    {anime.title}
                   </Typography>
                 </CardContent>
 
                 <CardActions disableSpacing>
                   <IconButton
                     aria-label="add to favorites"
-                    onClick={() => AnimeFavorites(Anime)}  
+                    onClick={() => DeleteAnimeFavorites(anime)}
                   >
                     <FavoriteIcon />
                   </IconButton>
@@ -90,7 +89,7 @@ export const Animes = ({ AnimeData, condition }) => {
                   </IconButton>
                   <ExpandMore
                     expand={expanded}
-                    onClick={(id) => handleExpandClick(Anime.mal_id)}
+                    onClick={(id) => handleExpandClick(anime.mal_id)}
                     aria-expanded={expanded}
                     aria-label="show more"
                   >
@@ -99,13 +98,13 @@ export const Animes = ({ AnimeData, condition }) => {
                 </CardActions>
 
                 <Collapse
-                  in={expanded[Anime.mal_id]}
+                  in={expanded[anime.mal_id]}
                   timeout="auto"
                   unmountOnExit
                 >
                   <CardContent>
                     <Typography paragraph>synopsis:</Typography>
-                    <Typography paragraph>{Anime.synopsis}</Typography>
+                    <Typography paragraph>{anime.synopsis}</Typography>
                   </CardContent>
                 </Collapse>
               </Card>
