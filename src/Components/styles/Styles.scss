@@ -81,7 +81,7 @@ body {
             grid-gap: 20px;
             align-items: center;
             justify-items: center;
-            
+
         }
 
         .container-home {
@@ -100,14 +100,23 @@ body {
 
     }
 
-    .Favorites{
-        h1{
+    .Favorites {
+        h1 {
             text-align: center;
-            margin:  50px;
+            margin: 50px;
         }
     }
 
-
+    .alert-message {
+        position: absolute;
+        height: 150vh;
+        display: flex;        
+        justify-content: center;
+        margin: 0 auto;
+        z-index: 1;
+        width: 50%;
+        
+    }
     @media (max-width: 800px) {
         .Grid {
             width: 95%;
@@ -124,7 +133,13 @@ body {
             width: 95%;
         }
 
-
+        .alert-message {
+            position: absolute;
+            top: 0;
+            width: 90%;
+            margin: auto;
+            z-index: 50;
+        }
     }
 
     @media (max-width: 500px) {
@@ -136,6 +151,14 @@ body {
 
         img {
             height: 200px;
+        }
+
+        .alert-message {
+            position: absolute;
+            top: 0;
+            width: 70%;
+            margin: auto;
+            z-index: 50;
         }
     }
 }

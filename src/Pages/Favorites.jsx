@@ -9,10 +9,11 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "animate.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ActionAlerts from "../Components/ActionsAlerts";
 
 let nombre = JSON.parse(localStorage.getItem("animeFavs"));
 
@@ -29,6 +30,7 @@ const ExpandMore = styled((props) => {
 
 export const Favorites = () => {
   const [expanded, setExpanded] = useState(false);
+  const [confirm, setConfirm] = useState(false)
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -37,10 +39,14 @@ export const Favorites = () => {
     }));
   };
 
-  const DeleteAnimeFavorites = (anime) => {
-    const newAnimeFavs = nombre.filter((anime) => anime.mal_id !== anime.mal_id);
+  const DeleteAnimeFavorites = (nombre, anime) => {
+    alert("Estas seguro que quieres eliminar este anime de tus favoritos?");
+    setConfirm(true);
+    const newAnimeFavs = nombre.filter((serie) => serie !== anime);
     localStorage.setItem("animeFavs", JSON.stringify(newAnimeFavs));
-      
+    setTimeout(() => {
+      setConfirm(false);
+    }, 1000);
   };
 
   return (
@@ -51,7 +57,6 @@ export const Favorites = () => {
         </div>
       ) : (
         nombre.map((anime) => {
-          console.log(anime);
           return (
             <div
               key={anime.mal_id}
@@ -79,10 +84,10 @@ export const Favorites = () => {
 
                 <CardActions disableSpacing>
                   <IconButton
-                    aria-label="add to favorites"
-                    onClick={() => DeleteAnimeFavorites(anime)}
+                    aria-label="delete"
+                    onClick={() => DeleteAnimeFavorites(nombre, anime)}
                   >
-                    <FavoriteIcon />
+                    <DeleteIcon />
                   </IconButton>
                   <IconButton aria-label="share">
                     <ShareIcon />
@@ -112,6 +117,7 @@ export const Favorites = () => {
           );
         })
       )}
+      {confirm === true ? <ActionAlerts /> : null}
     </div>
   );
 };
