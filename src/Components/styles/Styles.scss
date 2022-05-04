@@ -109,12 +109,13 @@ body {
 
     .alert-message {
         position: absolute;
-        height: 150vh;
+   
         display: flex;        
         justify-content: center;
         margin: 0 auto;
         z-index: 1;
         width: 50%;
+        top: 0;
         
     }
     @media (max-width: 800px) {

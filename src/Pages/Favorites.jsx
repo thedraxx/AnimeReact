@@ -11,11 +11,12 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import "animate.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ActionAlerts from "../Components/ActionsAlerts";
+import "animate.css";
 
 let nombre = JSON.parse(localStorage.getItem("animeFavs"));
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,7 +31,7 @@ const ExpandMore = styled((props) => {
 
 export const Favorites = () => {
   const [expanded, setExpanded] = useState(false);
-  const [confirm, setConfirm] = useState(false)
+  const [confirm, setConfirm] = useState(false);
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -46,12 +47,15 @@ export const Favorites = () => {
     localStorage.setItem("animeFavs", JSON.stringify(newAnimeFavs));
     setTimeout(() => {
       setConfirm(false);
+      window.location.reload();
     }, 1000);
   };
 
+
+
   return (
     <div className="Grid">
-      {nombre.length === 0 ? (
+      {nombre === null || nombre === undefined ? (
         <div>
           <h1>No hay Favoritos, actualiza la pagina para verlos</h1>
         </div>

@@ -29,10 +29,9 @@ const ExpandMore = styled((props) => {
 export const Animes = ({ AnimeData, condition }) => {
   const [expanded, setExpanded] = useState(false);
   const [animeFavs, setAnimeFavs] = useState([]);
-
-  Object.keys(animeFavs).length === 0 ? console.log('xD') :
-  localStorage.setItem('animeFavs', JSON.stringify(animeFavs));
-
+  
+  //Guarda los animes favoritos en localStorage
+  localStorage.setItem("animeFavs", JSON.stringify(animeFavs));
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -41,8 +40,9 @@ export const Animes = ({ AnimeData, condition }) => {
     }));
   };
 
+  //funcion que es llamado con un boton para almacenar los animes favoritos
   const AnimeFavorites = (anime) => {
-    setAnimeFavs([...animeFavs, anime]);
+    setAnimeFavs(current => [...current, anime]);
   };
 
   return (
@@ -81,7 +81,7 @@ export const Animes = ({ AnimeData, condition }) => {
                 <CardActions disableSpacing>
                   <IconButton
                     aria-label="add to favorites"
-                    onClick={() => AnimeFavorites(Anime)}  
+                    onClick={() => AnimeFavorites(Anime)}
                   >
                     <FavoriteIcon />
                   </IconButton>
