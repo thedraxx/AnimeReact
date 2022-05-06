@@ -14,6 +14,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ActionAlerts from "../Components/ActionsAlerts";
 import "animate.css";
+import '../Components/styles/Styles.scss';
 
 let nombre = JSON.parse(localStorage.getItem("animeFavs"));
 
@@ -52,12 +53,11 @@ export const Favorites = () => {
   };
 
 
-
   return (
     <div className="Grid">
-      {nombre === null || nombre === undefined ? (
+      {nombre.length === 0 ? (
         <div>
-          <h1>No hay Favoritos, actualiza la pagina para verlos</h1>
+          <h1 className="No-Favorite">No hay Favoritos, actualiza la pagina para verlos</h1>
         </div>
       ) : (
         nombre.map((anime) => {

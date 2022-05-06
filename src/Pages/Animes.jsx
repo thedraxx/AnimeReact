@@ -29,7 +29,7 @@ const ExpandMore = styled((props) => {
 export const Animes = ({ AnimeData, condition }) => {
   const [expanded, setExpanded] = useState(false);
   const [animeFavs, setAnimeFavs] = useState([]);
-  
+
   //Guarda los animes favoritos en localStorage
   localStorage.setItem("animeFavs", JSON.stringify(animeFavs));
 

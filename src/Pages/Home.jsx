@@ -2,16 +2,9 @@ import { HomePage } from "./HomePage";
 import { RandomAnime } from "../Components/RandomAnime";
 import { useState } from "react";
 import { Loader } from "../Components/Loader";
-import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import "../Components/styles/Styles.scss";
-
-const Input = styled("input")({
-  display: "none",
-});
 
 export const Home = () => {
   const [condicion, setCondicion] = useState(false);
@@ -58,7 +51,7 @@ export const Home = () => {
         </div>
       )}
       {Object.keys(dataRandom).length === 0 ? (
-        <></>
+        <>{console.log("xD")}</>
       ) : (
         <HomePage dataRandom={dataRandom} />
       )}

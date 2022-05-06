@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Animes } from '../Pages/Animes';
-import {helpHttp} from './helpers/helphttp';
+import React, { useEffect, useState } from "react";
+import { Animes } from "../Pages/Animes";
+import { helpHttp } from "./helpers/helphttp";
 
 export const AnimeData = () => {
-
   const [AnimeData, setAnimeData] = useState([]);
   const [condition, setCondition] = useState(null);
 
@@ -19,6 +18,12 @@ export const AnimeData = () => {
   }, []);
 
   return (
-    <Animes AnimeData={AnimeData}  condition={condition}/>
-  )
-}
+    <>
+      {AnimeData.length === 0 ? (
+        console.log("esta vacio")
+      ) : (
+        <Animes AnimeData={AnimeData} condition={condition} />
+      )}
+    </>
+  );
+};

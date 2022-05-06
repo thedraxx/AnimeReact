@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Animes } from '../Pages/Animes';
 import {helpHttp} from './helpers/helphttp';
 
 export const RandomAnime = ({setDataRandom,number,setLoad}) => {
@@ -20,6 +19,7 @@ export const RandomAnime = ({setDataRandom,number,setLoad}) => {
 
   return (
     <>
+    
     </>
   )
 }

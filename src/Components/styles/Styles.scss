@@ -56,6 +56,13 @@ body {
             font-size: 15px;
             text-decoration: solid;
         }
+
+        .No-Favorite {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
     }
 
     .home {
@@ -100,24 +107,18 @@ body {
 
     }
 
-    .Favorites {
-        h1 {
-            text-align: center;
-            margin: 50px;
-        }
-    }
-
     .alert-message {
         position: absolute;
-   
-        display: flex;        
+
+        display: flex;
         justify-content: center;
         margin: 0 auto;
         z-index: 1;
         width: 50%;
         top: 0;
-        
+
     }
+
     @media (max-width: 800px) {
         .Grid {
             width: 95%;
