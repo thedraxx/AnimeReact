@@ -11,7 +11,7 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import "../Components/styles/Styles.scss";
+import "../styles/Styles.scss";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -154,18 +154,3 @@ export const NavBar = () => {
   );
 };
 
-// return (
-//   <>
-
-//   <NAVBAR>
-//     <ul>
-//       <li>
-//         <NavLink to="/">Home</NavLink>
-//       </li>
-//       <li>
-//         <NavLink to="/Animes">Animes</NavLink>
-//       </li>
-//     </ul>
-//     </NAVBAR>
-//   </>
-// );

@@ -13,7 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "animate.css";
-import "../Components/styles/Styles.scss";
+import "../styles/Styles.scss";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;

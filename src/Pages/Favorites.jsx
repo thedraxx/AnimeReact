@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../Components/styles/Styles.scss";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -14,7 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ActionAlerts from "../Components/ActionsAlerts";
 import "animate.css";
-import '../Components/styles/Styles.scss';
+import '../styles/Styles.scss';
 
 let nombre = JSON.parse(localStorage.getItem("animeFavs"));
 

@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Rutas } from './Components/Rutas';
-import './Components/styles/Styles.scss';
+import './styles/Styles.scss';
 
 function App() {
   return (
