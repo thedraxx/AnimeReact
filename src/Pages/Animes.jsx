@@ -42,7 +42,7 @@ export const Animes = ({ AnimeData, condition }) => {
 
   //funcion que es llamado con un boton para almacenar los animes favoritos
   const AnimeFavorites = (anime) => {
-    setAnimeFavs(current => [...current, anime]);
+    setAnimeFavs((current) => [...current, anime]);
   };
 
   return (
@@ -58,13 +58,17 @@ export const Animes = ({ AnimeData, condition }) => {
               key={Anime.mal_id}
               className="animate__animated animate__bounceIn"
             >
-              <Card sx={{ maxWidth: 345 }}>
+              <Card
+                sx={{ maxWidth: 345 }}
+                style={{ backgroundColor: "#2e3138", color: "white" }}
+              >
                 <CardHeader
                   action={<IconButton aria-label="settings"></IconButton>}
-                  title={<h1>Episodes: {Anime.episodes} </h1>}
-                  subheader={Anime.genres.map((genre) => {
-                    return `-${genre.name}-`;
-                  })}
+                  title={
+                    <h1 style={{ color: "white" }}>
+                      Episodes: {Anime.episodes}{" "}
+                    </h1>
+                  }
                 />
                 <CardMedia
                   component="img"
@@ -73,7 +77,7 @@ export const Animes = ({ AnimeData, condition }) => {
                   alt="image"
                 />
                 <CardContent>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" style={{ color: "white" }}>
                     {Anime.title}
                   </Typography>
                 </CardContent>
@@ -82,13 +86,15 @@ export const Animes = ({ AnimeData, condition }) => {
                   <IconButton
                     aria-label="add to favorites"
                     onClick={() => AnimeFavorites(Anime)}
+                    style={{ color: "white" }}
                   >
                     <FavoriteIcon />
                   </IconButton>
-                  <IconButton aria-label="share">
+                  <IconButton aria-label="share" style={{ color: "white" }}>
                     <ShareIcon />
                   </IconButton>
                   <ExpandMore
+                    style={{ color: "white" }}
                     expand={expanded}
                     onClick={(id) => handleExpandClick(Anime.mal_id)}
                     aria-expanded={expanded}
@@ -104,8 +110,12 @@ export const Animes = ({ AnimeData, condition }) => {
                   unmountOnExit
                 >
                   <CardContent>
-                    <Typography paragraph>synopsis:</Typography>
-                    <Typography paragraph>{Anime.synopsis}</Typography>
+                    <Typography paragraph style={{ color: "white" }}>
+                      synopsis:
+                    </Typography>
+                    <Typography paragraph style={{ color: "white" }}>
+                      {Anime.synopsis}
+                    </Typography>
                   </CardContent>
                 </Collapse>
               </Card>

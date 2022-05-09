@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-
+    background: #25262b;
 
     // NAVBAR
     a {
@@ -35,10 +35,23 @@ body {
     }
 
 
+    //Home
+    .home {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        
+    }
+
+
     // MostPopulars
     .Grid {
         width: 100%;
-        max-width: 1100px;
+        max-width: 1200px;
         margin: auto;
         margin-top: 60px;
         margin-bottom: 60px;

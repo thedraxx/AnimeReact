@@ -56,7 +56,7 @@ export const Favorites = () => {
     <div className="Grid">
       {nombre.length === 0 ? (
         <div>
-          <h1 className="No-Favorite">No hay Favoritos, actualiza la pagina para verlos</h1>
+          <h1 className="No-Favorite" style={{color: 'white'}}>No hay Favoritos, actualiza la pagina para verlos</h1>
         </div>
       ) : (
         nombre.map((anime) => {
@@ -65,13 +65,10 @@ export const Favorites = () => {
               key={anime.mal_id}
               className="animate__animated animate__bounceIn"
             >
-              <Card sx={{ maxWidth: 345 }}>
+              <Card sx={{ maxWidth: 345 }} style={{backgroundColor: "#2e3138", color: 'white'}}>
                 <CardHeader
                   action={<IconButton aria-label="settings"></IconButton>}
-                  title={<h1>Episodes: {anime.episodes} </h1>}
-                  subheader={anime.genres.map((genre) => {
-                    return `-${genre.name}-`;
-                  })}
+                  title={<h1 style={{color: 'white'}}>Episodes: {anime.episodes} </h1>}
                 />
                 <CardMedia
                   component="img"
@@ -80,7 +77,7 @@ export const Favorites = () => {
                   alt="image"
                 />
                 <CardContent>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" style={{color: 'white'}}>
                     {anime.title}
                   </Typography>
                 </CardContent>
@@ -89,10 +86,11 @@ export const Favorites = () => {
                   <IconButton
                     aria-label="delete"
                     onClick={() => DeleteAnimeFavorites(nombre, anime)}
+                    style={{color: 'white'}}
                   >
                     <DeleteIcon />
                   </IconButton>
-                  <IconButton aria-label="share">
+                  <IconButton aria-label="share" style={{color: 'white'}}>
                     <ShareIcon />
                   </IconButton>
                   <ExpandMore
@@ -100,6 +98,7 @@ export const Favorites = () => {
                     onClick={(id) => handleExpandClick(anime.mal_id)}
                     aria-expanded={expanded}
                     aria-label="show more"
+                    style={{color: 'white'}}
                   >
                     <ExpandMoreIcon />
                   </ExpandMore>
