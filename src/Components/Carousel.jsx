@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -44,18 +44,30 @@ position: relative;
   }
 `;
 
-export const Carousel = () => {
-  const images = ["a.png", "k.png", "c.png"];
+
+export const Carousel = (props) => {
+
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const [selectedImage, setSelectedImage] = useState(props.images[0]);
   const [loaded, setLoaded] = useState(false);
   const [isPink, setIsPink] = useState(false);
+
+
+  useEffect(() => {
+    if (props.autoPlay || !props.showButtons) {
+      const interval = setInterval(() => {
+        selectNewImage(selectedIndex, props.images);
+        setIsPink(!isPink);
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  });
 
   const selectNewImage = (index, image, next = true) => {
     setLoaded(false);
     setTimeout(() => {
       const condition = next
-        ? selectedIndex < images.length - 1
+        ? selectedIndex < props.images.length - 1
         : selectedIndex > 0;
       const nextIndex = next
         ? condition
@@ -63,22 +75,21 @@ export const Carousel = () => {
           : 0
         : condition
         ? selectedIndex - 1
-        : images.length - 1;
-      setSelectedImage(images[nextIndex]);
+        : props.images.length - 1;
+      setSelectedImage(props.images[nextIndex]);
       setSelectedIndex(nextIndex);
     }, 500);
   };
   const previous = () => {
-    selectNewImage(selectedIndex, images, false);
+    selectNewImage(selectedIndex,props.images, false);
     setIsPink(!isPink)
   };
 
   const next = () => {
-    selectNewImage(selectedIndex, images);
+    selectNewImage(selectedIndex,props.images);
     setIsPink(!isPink)
   };
 
-  console.log(loaded);
   return (
     <>
       <DIV isPink={isPink}>
