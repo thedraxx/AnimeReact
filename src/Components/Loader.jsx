@@ -1,7 +1,7 @@
 import React from "react";
-import "./Loader2.css";
+import "./Loader.css";
 
-export const Loader2 = () => {
+export const Loader = () => {
   return (
     <div className="lds-ellipsis">
       <div></div>

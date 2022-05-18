@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import { Loader2 } from "../Components/Loader2";
+import { Loader } from "../Components/Loader";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -49,7 +49,7 @@ export const Animes = ({ AnimeData, condition }) => {
     <div className="Grid">
       {!condition ? (
         <div className="container-random">
-          <Loader2 />
+          <Loader />
         </div>
       ) : (
         AnimeData.data.map((Anime) => {
@@ -85,8 +85,8 @@ export const Animes = ({ AnimeData, condition }) => {
                 <CardActions disableSpacing>
                   <IconButton
                     aria-label="add to favorites"
-                    onClick={() => AnimeFavorites(Anime)}
-                    style={{ color: "white" }}
+                    onClick={(id) => AnimeFavorites(Anime )}
+                    style={ { color: "white" } }
                   >
                     <FavoriteIcon />
                   </IconButton>
