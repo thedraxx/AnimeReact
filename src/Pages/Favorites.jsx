@@ -54,7 +54,7 @@ export const Favorites = () => {
 
   return (
     <div className="Grid">
-      {nombre.length === 0 ? (
+      {nombre === null ? (
         <div>
           <h1 className="No-Favorite" style={{color: 'white'}}>No hay Favoritos, actualiza la pagina para verlos</h1>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Loader } from "../Components/Loader";
 import Card from "@mui/material/Card";
@@ -30,8 +30,14 @@ export const Animes = ({ AnimeData, condition }) => {
   const [expanded, setExpanded] = useState(false);
   const [animeFavs, setAnimeFavs] = useState([]);
 
-  //Guarda los animes favoritos en localStorage
-  localStorage.setItem("animeFavs", JSON.stringify(animeFavs));
+  useEffect(() => {
+    //Guarda los animes favoritos en localStorage
+    if(animeFavs.length === 0){
+      let favorites = JSON.parse(localStorage.getItem("animeFavs")) || [];
+      setAnimeFavs(favorites);
+    }
+    localStorage.setItem("animeFavs", JSON.stringify(animeFavs));
+  }, [animeFavs]);
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -85,8 +91,8 @@ export const Animes = ({ AnimeData, condition }) => {
                 <CardActions disableSpacing>
                   <IconButton
                     aria-label="add to favorites"
-                    onClick={(id) => AnimeFavorites(Anime )}
-                    style={ { color: "white" } }
+                    onClick={(id) => AnimeFavorites(Anime)}
+                    style={{ color: "white" }}
                   >
                     <FavoriteIcon />
                   </IconButton>
