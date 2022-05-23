@@ -10,8 +10,28 @@
 ## ⚛️ Versión de React
 
 ```
-react: 18
+  React: 18
 ```
+## ⚛️ Versión de SCSS
+
+```
+  SCSS: 1.50.0
+```
+## ⚛️ Versión de Styled Components
+
+```
+  Styles Components: 5.3.5
+```
+## ⚛️ Versión de React Router
+
+``` 
+  React Router: 6
+```
+## ⚛️ Versión de Material UI
+
+```
+  Material UI: 5.6.1
+``` 
 
 ## 🔮 Futuro del Proyecto
 
