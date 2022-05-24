@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,11 +13,11 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import "../styles/Styles.scss";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 export const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const Navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,8 +34,12 @@ export const NavBar = () => {
     setAnchorElUser(null);
   };
 
+  const handleLogout = () => {
+    Navigate("/login", { replace: true });
+  };
+
   return (
-    <AppBar position="static" style={{background: '#141519'}}>
+    <AppBar position="static" style={{ background: "#141519" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -113,16 +117,19 @@ export const NavBar = () => {
               </NavLink>
             </li>
             <li>
-                <NavLink to="/favorites" activeclassname="active">
-                  Favorites
-                </NavLink>
+              <NavLink to="/favorites" activeclassname="active">
+                Favorites
+              </NavLink>
             </li>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Icon"
+                  src="https://static.crunchyroll.com/assets/avatar/170x170/100006-spy-x-family-loid.png"
+                />
               </IconButton>
             </Tooltip>
             <Menu
@@ -141,11 +148,13 @@ export const NavBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" onClick={handleLogout}>
+                    Logout
+                  </Typography>
                 </MenuItem>
-              ))}
+              }
             </Menu>
           </Box>
         </Toolbar>
@@ -153,4 +162,3 @@ export const NavBar = () => {
     </AppBar>
   );
 };
-
