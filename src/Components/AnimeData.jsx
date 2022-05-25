@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Animes } from "../Pages/Animes";
-import { helpHttp } from "./helpers/helphttp";
+import { helpHttp } from "../helpers/helphttp";
 
 export const AnimeData = () => {
   const [AnimeData, setAnimeData] = useState([]);

@@ -13,10 +13,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ActionAlerts from "../Components/ActionsAlerts";
 import "animate.css";
-import '../styles/Styles.scss';
+import "../styles/Styles.scss";
 
 let nombre = JSON.parse(localStorage.getItem("animeFavs"));
-
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,12 +31,14 @@ const ExpandMore = styled((props) => {
 export const Favorites = () => {
   const [expanded, setExpanded] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const [icon, setIcon] = useState(false);
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
       ...expanded,
       [id]: !expanded[id],
     }));
+    setIcon(!icon);
   };
 
   const DeleteAnimeFavorites = (nombre, anime) => {
@@ -51,12 +52,13 @@ export const Favorites = () => {
     }, 1000);
   };
 
-
   return (
     <div className="Grid">
       {nombre === null ? (
         <div>
-          <h1 className="No-Favorite" style={{color: 'white'}}>No hay Favoritos, actualiza la pagina para verlos</h1>
+          <h1 className="No-Favorite" style={{ color: "white" }}>
+            No hay Favoritos, actualiza la pagina para verlos
+          </h1>
         </div>
       ) : (
         nombre.map((anime) => {
@@ -65,10 +67,17 @@ export const Favorites = () => {
               key={anime.mal_id}
               className="animate__animated animate__bounceIn"
             >
-              <Card sx={{ maxWidth: 345 }} style={{backgroundColor: "#2e3138", color: 'white'}}>
+              <Card
+                sx={{ maxWidth: 345 }}
+                style={{ backgroundColor: "#2e3138", color: "white" }}
+              >
                 <CardHeader
                   action={<IconButton aria-label="settings"></IconButton>}
-                  title={<h1 style={{color: 'white'}}>Episodes: {anime.episodes} </h1>}
+                  title={
+                    <h1 style={{ color: "white" }}>
+                      Episodes: {anime.episodes}{" "}
+                    </h1>
+                  }
                 />
                 <CardMedia
                   component="img"
@@ -77,7 +86,11 @@ export const Favorites = () => {
                   alt="image"
                 />
                 <CardContent>
-                  <Typography variant="body2" color="text.secondary" style={{color: 'white'}}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ color: "white" }}
+                  >
                     {anime.title}
                   </Typography>
                 </CardContent>
@@ -86,19 +99,19 @@ export const Favorites = () => {
                   <IconButton
                     aria-label="delete"
                     onClick={() => DeleteAnimeFavorites(nombre, anime)}
-                    style={{color: 'white'}}
+                    style={{ color: "white" }}
                   >
                     <DeleteIcon />
                   </IconButton>
-                  <IconButton aria-label="share" style={{color: 'white'}}>
+                  <IconButton aria-label="share" style={{ color: "white" }}>
                     <ShareIcon />
                   </IconButton>
                   <ExpandMore
-                    expand={expanded}
+                    expand={icon}
                     onClick={(id) => handleExpandClick(anime.mal_id)}
                     aria-expanded={expanded}
                     aria-label="show more"
-                    style={{color: 'white'}}
+                    style={{ color: "white" }}
                   >
                     <ExpandMoreIcon />
                   </ExpandMore>

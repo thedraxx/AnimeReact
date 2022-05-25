@@ -29,6 +29,7 @@ const ExpandMore = styled((props) => {
 export const Animes = ({ AnimeData, condition }) => {
   const [expanded, setExpanded] = useState(false);
   const [animeFavs, setAnimeFavs] = useState([]);
+  const [icon, setIcon] = useState(false)
 
   useEffect(() => {
     //Guarda los animes favoritos en localStorage
@@ -44,12 +45,15 @@ export const Animes = ({ AnimeData, condition }) => {
       ...expanded,
       [id]: !expanded[id],
     }));
+    setIcon(!icon);
+
   };
 
   //funcion que es llamado con un boton para almacenar los animes favoritos
   const AnimeFavorites = (anime) => {
     setAnimeFavs((current) => [...current, anime]);
   };
+
 
   return (
     <div className="Grid">
@@ -101,7 +105,7 @@ export const Animes = ({ AnimeData, condition }) => {
                   </IconButton>
                   <ExpandMore
                     style={{ color: "white" }}
-                    expand={expanded}
+                    expand={icon}
                     onClick={(id) => handleExpandClick(Anime.mal_id)}
                     aria-expanded={expanded}
                     aria-label="show more"
