@@ -5,9 +5,9 @@ import "../styles/Styles.scss";
 import { HomeGaleryRecomends } from "./HomeGaleryRecomends";
 
 const H1 = styled.h1`
+  font-family: "Helvetica Neue", helvetica, sans-serif;
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.3rem; ;
 `;
 
 export const HomeGalery = () => {

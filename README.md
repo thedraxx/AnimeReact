@@ -33,6 +33,14 @@
   Material UI: 5.6.1
 ``` 
 
+## ⚛️ Jikan API
+
+```
+  Jikan API: 4.0.0
+``` 
+
+
+
 ## 🔮 Futuro del Proyecto
 
 Funciona, aunque se espera implmentar muchas mas features.

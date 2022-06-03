@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
-* {
-    font-family: 'Roboto', sans-serif;
-}
-
-$grayblack: #25262b;
-$graywhite: #4d4d4d;
-$white:#fff;
-
+@import './base/base';
 
 body {
     margin: 0;
@@ -68,13 +59,15 @@ body {
             text-decoration: solid;
         }
 
+
         .No-Favorite {
-            display: flex;
-            align-items: center;
+            width: 100%;
+            font-size: 25px;
+            color: $white;
             text-align: center;
-            justify-content: center;
         }
     }
+
 
     // Favorites
     .alert-message {
@@ -95,7 +88,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: left;
+
 
         .HomeGalery__container {
             width: 100%;
@@ -104,8 +97,9 @@ body {
             flex-direction: wrap;
             justify-content: center;
 
+
             & img {
-                width: 20%;
+                width: 13%;
                 height: auto;
                 display: flex;
                 flex-direction: column;
@@ -122,6 +116,7 @@ body {
             }
         }
     }
+
 
     @media (max-width: 800px) {
         .Grid {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Animes } from "../Pages/Animes";
 import { helpHttp } from "../helpers/helphttp";
+import { Loader } from "./Loader";
 
 export const AnimeData = () => {
   const [AnimeData, setAnimeData] = useState([]);
@@ -19,8 +20,8 @@ export const AnimeData = () => {
 
   return (
     <>
-      {AnimeData.length === 0 ? (
-        console.log("esta vacio")
+      {AnimeData.length === 0 || AnimeData === null ? (
+        <Loader />
       ) : (
         <Animes AnimeData={AnimeData} condition={condition} />
       )}

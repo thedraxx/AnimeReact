@@ -39,7 +39,10 @@ export const NavBar = () => {
   };
 
   return (
-    <AppBar position="static" style={{ background: "#141519" }}>
+    <AppBar
+      position="static"
+      style={{ background: "#141519", position: "static" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

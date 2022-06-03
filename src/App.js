@@ -1,4 +1,5 @@
-import { Rutas } from './Components/Rutas';
+
+import { Rutas } from './routers/Rutas';
 import './styles/Styles.scss';
 
 function App() {

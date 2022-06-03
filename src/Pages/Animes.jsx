@@ -29,11 +29,11 @@ const ExpandMore = styled((props) => {
 export const Animes = ({ AnimeData, condition }) => {
   const [expanded, setExpanded] = useState(false);
   const [animeFavs, setAnimeFavs] = useState([]);
-  const [icon, setIcon] = useState(false)
+  const [icon, setIcon] = useState(false);
 
   useEffect(() => {
     //Guarda los animes favoritos en localStorage
-    if(animeFavs.length === 0){
+    if (animeFavs.length === 0) {
       let favorites = JSON.parse(localStorage.getItem("animeFavs")) || [];
       setAnimeFavs(favorites);
     }
@@ -46,14 +46,12 @@ export const Animes = ({ AnimeData, condition }) => {
       [id]: !expanded[id],
     }));
     setIcon(!icon);
-
   };
 
   //funcion que es llamado con un boton para almacenar los animes favoritos
   const AnimeFavorites = (anime) => {
     setAnimeFavs((current) => [...current, anime]);
   };
-
 
   return (
     <div className="Grid">

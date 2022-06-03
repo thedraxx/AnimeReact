@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -54,12 +54,12 @@ export const Favorites = () => {
 
   return (
     <div className="Grid">
-      {nombre === null ? (
-        <div>
-          <h1 className="No-Favorite" style={{ color: "white" }}>
+      {nombre.length === 0 || nombre === null ? (
+        <>
+          <h1 className="No-Favorite">
             No hay Favoritos, actualiza la pagina para verlos
           </h1>
-        </div>
+        </>
       ) : (
         nombre.map((anime) => {
           return (
