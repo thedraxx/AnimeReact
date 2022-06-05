@@ -145,8 +145,13 @@ body {
 
         .HomeGalery {
             .HomeGalery__container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
                 & img {
-                    width: 100%;
+                    width: 80%;
                 }
             }
         }
@@ -170,5 +175,8 @@ body {
             margin: auto;
             z-index: 50;
         }
+
+
+
     }
 }

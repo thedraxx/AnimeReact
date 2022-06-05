@@ -25,6 +25,9 @@ const BackgroundBlur = styled.div`
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
+  @media (max-width: 1100px) {
+    filter: blur(0px);
+  }
 `;
 
 const ImageRecomend = styled.img`
@@ -35,7 +38,11 @@ const ImageRecomend = styled.img`
   width: 20%;
   z-index: 1;
   position: absolute;
-  z-index: 9999;
+  object-fit: contain;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const DIVINFO = styled.div`
@@ -43,6 +50,9 @@ const DIVINFO = styled.div`
   flex-direction: column;
   align-items: start;
   width: 50%;
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `;
 
 const H1 = styled.h1`
@@ -71,7 +81,6 @@ export const Recomends = () => {
       <ImageRecomend src={animeRecomend.src} alt={animeRecomend.name} />
 
       <DIVINFO>
-        <RecomendTitle>Nuestras Recomendaciones:</RecomendTitle>
         <H1>{animeRecomend.name}</H1>
         <H2>{animeRecomend.synopsis}</H2>
       </DIVINFO>

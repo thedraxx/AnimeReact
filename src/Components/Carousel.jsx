@@ -27,10 +27,13 @@ const CarouselButtonContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   margin: 15px auto;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const CarrierouselButton = styled.button`
-position: relative;
+  position: relative;
   color: #fff;
   background-color: transparent;
   top: 50%;
@@ -44,14 +47,11 @@ position: relative;
   }
 `;
 
-
 export const Carousel = (props) => {
-
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(props.images[0]);
   const [loaded, setLoaded] = useState(false);
   const [isPink, setIsPink] = useState(false);
-
 
   useEffect(() => {
     if (props.autoPlay || !props.showButtons) {
@@ -81,13 +81,13 @@ export const Carousel = (props) => {
     }, 500);
   };
   const previous = () => {
-    selectNewImage(selectedIndex,props.images, false);
-    setIsPink(!isPink)
+    selectNewImage(selectedIndex, props.images, false);
+    setIsPink(!isPink);
   };
 
   const next = () => {
-    selectNewImage(selectedIndex,props.images);
-    setIsPink(!isPink)
+    selectNewImage(selectedIndex, props.images);
+    setIsPink(!isPink);
   };
 
   return (
