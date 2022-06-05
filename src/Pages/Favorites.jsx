@@ -48,7 +48,6 @@ export const Favorites = () => {
     localStorage.setItem("animeFavs", JSON.stringify(newAnimeFavs));
     setTimeout(() => {
       setConfirm(false);
-      window.location.reload();
     }, 1000);
   };
 

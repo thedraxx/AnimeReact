@@ -55,7 +55,7 @@ export const Animes = ({ AnimeData, condition }) => {
 
   return (
     <div className="Grid">
-      {!condition ? (
+      {!AnimeData || AnimeData == null ? (
         <div className="container-random">
           <Loader />
         </div>
