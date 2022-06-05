@@ -53,7 +53,7 @@ export const Favorites = () => {
 
   return (
     <div className="Grid">
-      {nombre.length === 0 || nombre === null ? (
+      {nombre.length == 0 || nombre == null ? (
         <>
           <h1 className="No-Favorite">
             No hay Favoritos, actualiza la pagina para verlos
