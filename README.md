@@ -43,7 +43,10 @@
 
 ## 🔮 Futuro del Proyecto
 
-Funciona, aunque se espera implmentar muchas mas features.
+- Funciona, aunque se espera implmentar muchas mas features.
+- Problemas de rendimiento a la hora de cargar imagenes.
+- Bugs que se esperan solucionar en un futuro.
+
 
 ## ✉️ Contacto
 
