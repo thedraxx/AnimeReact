@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
-import { Loader } from "../Components/Loader";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,11 +8,14 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ActionAlerts from "../../Components/ActionsAlerts";
 import "animate.css";
-import "../styles/Styles.scss";
+import "../../styles/Favorites.scss";
+
+let nombre = JSON.parse(localStorage.getItem("animeFavs"));
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,19 +28,11 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const Animes = ({ AnimeData, condition }) => {
+export const Favorites = () => {
   const [expanded, setExpanded] = useState(false);
-  const [animeFavs, setAnimeFavs] = useState([]);
+  const [confirm, setConfirm] = useState(false);
   const [icon, setIcon] = useState(false);
-
-  useEffect(() => {
-    //Guarda los animes favoritos en localStorage
-    if (animeFavs.length === 0) {
-      let favorites = JSON.parse(localStorage.getItem("animeFavs")) || [];
-      setAnimeFavs(favorites);
-    }
-    localStorage.setItem("animeFavs", JSON.stringify(animeFavs));
-  }, [animeFavs]);
+  const [animeFavs, setAnimeFavs] = useState([]);
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -48,22 +42,32 @@ export const Animes = ({ AnimeData, condition }) => {
     setIcon(!icon);
   };
 
-  //funcion que es llamado con un boton para almacenar los animes favoritos
-  const AnimeFavorites = (anime) => {
-    setAnimeFavs((current) => [...current, anime]);
+  const DeleteAnimeFavorites = (animeDelete) => {
+    alert("Estas seguro que quieres eliminar este anime de tus favoritos?");
+    const newAnimeFavs = animeFavs.filter(
+      (anime) => anime.mal_id !== animeDelete
+    );
+    localStorage.setItem("animeFavs", JSON.stringify(newAnimeFavs));
+    setAnimeFavs(newAnimeFavs);
   };
+
+  useEffect(() => {
+    setAnimeFavs(JSON.parse(localStorage.getItem("animeFavs")));
+  }, [nombre]);
+
+  console.log(animeFavs);
 
   return (
     <div className="Grid">
-      {!AnimeData || AnimeData == null ? (
-        <div className="container-random">
-          <Loader />
-        </div>
+      {animeFavs == null || animeFavs.length == 0 ? (
+        <h1 className="No-Favorite">
+          (╥﹏╥) <p className="parraph">no favorites</p>
+        </h1>
       ) : (
-        AnimeData.data.map((Anime) => {
+        animeFavs.map((anime) => {
           return (
             <div
-              key={Anime.mal_id}
+              key={anime.mal_id}
               className="animate__animated animate__bounceIn"
             >
               <Card
@@ -72,58 +76,54 @@ export const Animes = ({ AnimeData, condition }) => {
               >
                 <CardHeader
                   action={<IconButton aria-label="settings"></IconButton>}
-                  title={
-                    <h1 style={{ color: "white" }}>
-                      Episodes: {Anime.episodes}{" "}
-                    </h1>
-                  }
+                  title={<h1>Episodes: {anime.episodes} </h1>}
                 />
                 <CardMedia
                   component="img"
                   height="194"
-                  image={Anime.images.jpg.large_image_url}
+                  image={anime.images.jpg.large_image_url}
                   alt="image"
                 />
                 <CardContent>
-                  <Typography variant="body2" style={{ color: "white" }}>
-                    {Anime.title}
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ color: "white" }}
+                  >
+                    {anime.title}
                   </Typography>
                 </CardContent>
 
                 <CardActions disableSpacing>
                   <IconButton
-                    aria-label="add to favorites"
-                    onClick={(id) => AnimeFavorites(Anime)}
+                    aria-label="delete"
+                    onClick={() => DeleteAnimeFavorites(anime.mal_id)}
                     style={{ color: "white" }}
                   >
-                    <FavoriteIcon />
+                    <DeleteIcon />
                   </IconButton>
                   <IconButton aria-label="share" style={{ color: "white" }}>
                     <ShareIcon />
                   </IconButton>
                   <ExpandMore
-                    style={{ color: "white" }}
                     expand={icon}
-                    onClick={(id) => handleExpandClick(Anime.mal_id)}
+                    onClick={(id) => handleExpandClick(anime.mal_id)}
                     aria-expanded={expanded}
                     aria-label="show more"
+                    style={{ color: "white" }}
                   >
                     <ExpandMoreIcon />
                   </ExpandMore>
                 </CardActions>
 
                 <Collapse
-                  in={expanded[Anime.mal_id]}
+                  in={expanded[anime.mal_id]}
                   timeout="auto"
                   unmountOnExit
                 >
                   <CardContent>
-                    <Typography paragraph style={{ color: "white" }}>
-                      synopsis:
-                    </Typography>
-                    <Typography paragraph style={{ color: "white" }}>
-                      {Anime.synopsis}
-                    </Typography>
+                    <Typography paragraph>synopsis:</Typography>
+                    <Typography paragraph>{anime.synopsis}</Typography>
                   </CardContent>
                 </Collapse>
               </Card>
@@ -131,6 +131,7 @@ export const Animes = ({ AnimeData, condition }) => {
           );
         })
       )}
+      {confirm === true ? <ActionAlerts /> : null}
     </div>
   );
 };

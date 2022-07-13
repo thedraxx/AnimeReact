@@ -22,31 +22,6 @@ const CarouselImg = styled.img`
   }
 `;
 
-const CarouselButtonContainer = styled.div`
-  display: block;
-  max-width: 1000px;
-  width: 100%;
-  margin: 15px auto;
-  @media (max-width: 500px) {
-    display: none;
-  }
-`;
-
-const CarrierouselButton = styled.button`
-  position: relative;
-  color: #fff;
-  background-color: transparent;
-  top: 50%;
-  left: 50%;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  &:hover {
-    color: #000000;
-    background-color: rgba(61, 61, 61, 0.5);
-  }
-`;
-
 export const Carousel = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(props.images[0]);
@@ -80,30 +55,16 @@ export const Carousel = (props) => {
       setSelectedIndex(nextIndex);
     }, 500);
   };
-  const previous = () => {
-    selectNewImage(selectedIndex, props.images, false);
-    setIsPink(!isPink);
-  };
-
-  const next = () => {
-    selectNewImage(selectedIndex, props.images);
-    setIsPink(!isPink);
-  };
 
   return (
     <>
       <DIV isPink={isPink}>
         <CarouselImg
-          src={require(`../assets/img/${selectedImage}`)}
+          src={`${selectedImage}`}
           alt="generic"
           className={loaded ? "loaded" : ""}
           onLoad={() => setLoaded(true)}
         />
-
-        <CarouselButtonContainer>
-          <CarrierouselButton onClick={previous}> {`<`} </CarrierouselButton>
-          <CarrierouselButton onClick={next}> {`>`} </CarrierouselButton>
-        </CarouselButtonContainer>
       </DIV>
     </>
   );

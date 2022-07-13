@@ -1,4 +1,4 @@
-import { recomends } from "../data/Recomends"
+import { recomends } from "../data/recomends"
 
 // Toma el ID que fue enviado desde Recomend.jsx gracias al uso de useParams y busca en el array de recomends el ID y lo retorna
 export const SearchRecomendbyId = (id = "") => {

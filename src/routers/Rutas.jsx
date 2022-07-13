@@ -1,7 +1,6 @@
-import React from "react";
-import { BrowserRouter, Route, Routes, HashRouter } from "react-router-dom";
-import { PrincipalScreen } from "../Components/PrincipalScreen";
+import { Route, Routes, HashRouter } from "react-router-dom";
 import { Login } from "../Pages/Login";
+import { PrincipalScreen } from "./PrincipalScreen";
 
 export const Rutas = () => {
   return (

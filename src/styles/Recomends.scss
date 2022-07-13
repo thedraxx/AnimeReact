@@ -1,0 +1,151 @@
+@import './base/base';
+
+.ContainerRecomends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: $grayblack;
+
+    .img-recomend {
+        width: 50%;
+        margin: 20px auto;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+        border: 3px solid orange;
+    }
+
+    .divinfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+
+        & .divinfo-title {
+            display: block;
+            width: 50%;
+            margin: 0 20px;
+
+            & h1 {
+                color: white;
+                font-size: 2rem;
+                font-weight: bold;
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            & h2 {
+                color: white;
+                font-size: 1rem;
+                font-weight: bold;
+                text-align: left;
+                margin: 0px 0px;
+            }
+        }
+
+        .container-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+
+            & .button {
+                background-attachment: fixed;
+                background-color: $grayblack;
+                border: none;
+                width: 120px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+                text-align: center;
+                color: white;
+                font-size: 1.3rem;
+                border: 2px solid orange;
+                padding: 7px;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .ContainerRecomends {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: $grayblack;
+
+        .img-recomend {
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .divinfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+
+            & .divinfo-title {
+                display: block;
+                width: 50%;
+                margin: 0 20px;
+
+                & h1 {
+                    color: white;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    text-align: center;
+                    margin: 10px 0;
+                }
+
+                & h2 {
+                    color: white;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    text-align: left;
+                    margin: 0px 0px;
+                }
+            }
+
+            .container-buttons {
+                width: 100%;
+                flex-direction: column;
+                margin: 20px 0;
+
+                & .button {
+                    background-attachment: fixed;
+                    background-color: $grayblack;
+                    border: none;
+                    width: 120px;
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -ms-border-radius: 5px;
+                    -o-border-radius: 5px;
+                    text-align: center;
+                    color: white;
+                    font-size: 1.3rem;
+                    border: 2px solid orange;
+                    padding: 7px;
+                    margin: 5px
+                }
+            }
+        }
+    }
+
+}

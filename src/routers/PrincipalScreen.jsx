@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { HomePage } from "../Pages/HomePage";
-import { AnimeData } from "./AnimeData";
+import { AnimeData } from "../Components/AnimeData";
 import { Favorites } from "../Pages/Favorites";
 import { NavBar } from "../Components/Navbar";
-import { Animes } from "../Pages/Animes";
-import { Recomends } from "../Pages/Recomends";
+import { Animes } from "../Pages/MostPopulars/Animes";
+import { Recomends } from "../Pages/MoreInfo/Recomends";
+import { HomePage } from "../Pages/HomePage/HomePage";
 
 export const PrincipalScreen = () => {
   return (

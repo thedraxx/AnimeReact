@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
+import { Loader } from "../../Components/Loader";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,14 +9,11 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ActionAlerts from "../Components/ActionsAlerts";
 import "animate.css";
-import "../styles/Styles.scss";
-
-let nombre = JSON.parse(localStorage.getItem("animeFavs"));
+import "../../styles/Styles.scss";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,10 +26,19 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const Favorites = () => {
+export const Animes = ({ AnimeData, condition }) => {
   const [expanded, setExpanded] = useState(false);
-  const [confirm, setConfirm] = useState(false);
+  const [animeFavs, setAnimeFavs] = useState([]);
   const [icon, setIcon] = useState(false);
+
+  useEffect(() => {
+    //Guarda los animes favoritos en localStorage
+    if (animeFavs.length === 0) {
+      let favorites = JSON.parse(localStorage.getItem("animeFavs")) || [];
+      setAnimeFavs(favorites);
+    }
+    localStorage.setItem("animeFavs", JSON.stringify(animeFavs));
+  }, [animeFavs]);
 
   const handleExpandClick = (id) => {
     setExpanded((expanded) => ({
@@ -41,29 +48,22 @@ export const Favorites = () => {
     setIcon(!icon);
   };
 
-  const DeleteAnimeFavorites = (nombre, anime) => {
-    alert("Estas seguro que quieres eliminar este anime de tus favoritos?");
-    setConfirm(true);
-    const newAnimeFavs = nombre.filter((serie) => serie !== anime);
-    localStorage.setItem("animeFavs", JSON.stringify(newAnimeFavs));
-    setTimeout(() => {
-      setConfirm(false);
-    }, 1000);
+  //funcion que es llamado con un boton para almacenar los animes favoritos
+  const AnimeFavorites = (anime) => {
+    setAnimeFavs((current) => [...current, anime]);
   };
 
   return (
     <div className="Grid">
-      {nombre.length == 0 || nombre == null ? (
-        <>
-          <h1 className="No-Favorite">
-            No hay Favoritos, actualiza la pagina para verlos
-          </h1>
-        </>
+      {!AnimeData || AnimeData == null ? (
+        <div className="container-random">
+          <Loader />
+        </div>
       ) : (
-        nombre.map((anime) => {
+        AnimeData.data.map((Anime) => {
           return (
             <div
-              key={anime.mal_id}
+              key={Anime.mal_id}
               className="animate__animated animate__bounceIn"
             >
               <Card
@@ -74,56 +74,56 @@ export const Favorites = () => {
                   action={<IconButton aria-label="settings"></IconButton>}
                   title={
                     <h1 style={{ color: "white" }}>
-                      Episodes: {anime.episodes}{" "}
+                      Episodes: {Anime.episodes}{" "}
                     </h1>
                   }
                 />
                 <CardMedia
                   component="img"
                   height="194"
-                  image={anime.images.jpg.large_image_url}
+                  image={Anime.images.jpg.large_image_url}
                   alt="image"
                 />
                 <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    style={{ color: "white" }}
-                  >
-                    {anime.title}
+                  <Typography variant="body2" style={{ color: "white" }}>
+                    {Anime.title}
                   </Typography>
                 </CardContent>
 
                 <CardActions disableSpacing>
                   <IconButton
-                    aria-label="delete"
-                    onClick={() => DeleteAnimeFavorites(nombre, anime)}
+                    aria-label="add to favorites"
+                    onClick={(id) => AnimeFavorites(Anime)}
                     style={{ color: "white" }}
                   >
-                    <DeleteIcon />
+                    <FavoriteIcon />
                   </IconButton>
                   <IconButton aria-label="share" style={{ color: "white" }}>
                     <ShareIcon />
                   </IconButton>
                   <ExpandMore
+                    style={{ color: "white" }}
                     expand={icon}
-                    onClick={(id) => handleExpandClick(anime.mal_id)}
+                    onClick={(id) => handleExpandClick(Anime.mal_id)}
                     aria-expanded={expanded}
                     aria-label="show more"
-                    style={{ color: "white" }}
                   >
                     <ExpandMoreIcon />
                   </ExpandMore>
                 </CardActions>
 
                 <Collapse
-                  in={expanded[anime.mal_id]}
+                  in={expanded[Anime.mal_id]}
                   timeout="auto"
                   unmountOnExit
                 >
                   <CardContent>
-                    <Typography paragraph>synopsis:</Typography>
-                    <Typography paragraph>{anime.synopsis}</Typography>
+                    <Typography paragraph style={{ color: "white" }}>
+                      synopsis:
+                    </Typography>
+                    <Typography paragraph style={{ color: "white" }}>
+                      {Anime.synopsis}
+                    </Typography>
                   </CardContent>
                 </Collapse>
               </Card>
@@ -131,7 +131,6 @@ export const Favorites = () => {
           );
         })
       )}
-      {confirm === true ? <ActionAlerts /> : null}
     </div>
   );
 };

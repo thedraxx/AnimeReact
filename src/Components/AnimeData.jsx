@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Animes } from "../Pages/Animes";
+import { Animes } from "../Pages/MostPopulars/Animes";
 import { helpHttp } from "../helpers/helphttp";
 import { Loader } from "./Loader";
 
