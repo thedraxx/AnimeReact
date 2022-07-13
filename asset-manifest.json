@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/%3CAnimeReact%3E/static/css/main.30560593.css",
-    "main.js": "/%3CAnimeReact%3E/static/js/main.9b1cf4d5.js",
-    "static/js/787.28cb0dcd.chunk.js": "/%3CAnimeReact%3E/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/%3CAnimeReact%3E/index.html",
-    "main.30560593.css.map": "/%3CAnimeReact%3E/static/css/main.30560593.css.map",
-    "main.9b1cf4d5.js.map": "/%3CAnimeReact%3E/static/js/main.9b1cf4d5.js.map",
-    "787.28cb0dcd.chunk.js.map": "/%3CAnimeReact%3E/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/AnimeReact/static/css/main.30560593.css",
+    "main.js": "/AnimeReact/static/js/main.d1b6369f.js",
+    "static/js/787.28cb0dcd.chunk.js": "/AnimeReact/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/AnimeReact/index.html",
+    "main.30560593.css.map": "/AnimeReact/static/css/main.30560593.css.map",
+    "main.d1b6369f.js.map": "/AnimeReact/static/js/main.d1b6369f.js.map",
+    "787.28cb0dcd.chunk.js.map": "/AnimeReact/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.30560593.css",
-    "static/js/main.9b1cf4d5.js"
+    "static/js/main.d1b6369f.js"
   ]
 }
